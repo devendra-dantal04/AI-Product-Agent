@@ -1,0 +1,19 @@
+# FastAPI & Server
+fastapi
+uvicorn[standard]
+
+# LangChain (only needed when using Gemini mode)
+langchain
+langchain-community
+langchain-google-genai
+
+# Vector Store
+chromadb
+
+# Local embeddings (used when no OpenAI key is set)
+sentence-transformers
+
+# Utilities
+python-dotenv
+
+# Note: `ast` is a Python built-in module — no installation required.

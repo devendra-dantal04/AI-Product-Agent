@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Developer Agent — Codebase Intelligence & Debug Assistant powered by RAG" />
+  <title>AI Developer Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================================================================== -->
+  <!-- SIDEBAR                                                            -->
+  <!-- ================================================================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon">🤖</div>
+      <h1>AI Developer Agent</h1>
+      <p class="subtitle">Codebase Intelligence &amp; Debug Assistant</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h2 class="section-title">Status</h2>
+      <div class="status-badge" id="statusBadge">
+        <span class="status-dot"></span>
+        <span id="statusText">Connecting…</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h2 class="section-title">Quick Questions</h2>
+      <div class="chips" id="quickChips">
+        <button class="chip" data-question="How do I configure OAuth?">⚙️ How do I configure OAuth?</button>
+        <button class="chip" data-question="What does handle_oauth_callback do?">🔗 What does handle_oauth_callback do?</button>
+        <button class="chip" data-question="Why is token validation failing?">🐛 Why is token validation failing?</button>
+        <button class="chip" data-question="How do I set up SSO?">🔐 How do I set up SSO?</button>
+        <button class="chip" data-question="What does validate_token return?">🔍 What does validate_token return?</button>
+      </div>
+    </div>
+
+    <div class="sidebar-section sidebar-footer">
+      <div class="footer-info">
+        <span>Powered by</span>
+        <strong>LangChain + GPT-4o</strong>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================================================================== -->
+  <!-- MAIN CHAT AREA                                                     -->
+  <!-- ================================================================== -->
+  <main class="main">
+    <!-- Top bar (mobile toggle + title) -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+        <span></span><span></span><span></span>
+      </button>
+      <h2>Chat</h2>
+      <button class="clear-btn" id="clearBtn" title="Clear chat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+      </button>
+    </header>
+
+    <!-- Messages -->
+    <div class="chat-window" id="chatWindow">
+      <div class="messages" id="messages">
+        <!-- Messages are injected here by app.js -->
+      </div>
+    </div>
+
+    <!-- Input area -->
+    <div class="input-area">
+      <div class="input-wrapper">
+        <textarea
+          id="questionInput"
+          placeholder="Ask about your codebase or documentation…"
+          rows="1"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" title="Send message">
+          <svg class="send-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <div class="spinner" style="display:none"></div>
+        </button>
+      </div>
+      <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift + Enter</kbd> for new line</p>
+    </div>
+  </main>
+
+  <!-- Overlay for mobile sidebar -->
+  <div class="overlay" id="overlay"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
